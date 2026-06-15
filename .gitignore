@@ -25,3 +25,6 @@ experiments/*/_run_*/
 
 # assignment template (separate upstream repo)
 /padp-final-templates/
+
+# local Claude Code config / agents
+.claude/
