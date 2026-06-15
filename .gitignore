@@ -6,3 +6,19 @@ data/*
 *.swp
 *.gch
 *.out
+
+# nsys / profiling artifacts
+*.nsys-rep
+*.sqlite
+
+# stray run outputs and screenshots
+/result.txt
+/hs_out
+image.png
+
+# compiled serial reference binaries (rebuild from the .c source)
+experiments/**/*_serial
+
+# superseded / contaminated experiment runs (kept on disk, not versioned)
+experiments/*/_archive_*/
+experiments/*/_run_*/
