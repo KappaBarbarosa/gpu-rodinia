@@ -1,0 +1,28 @@
+{
+  "name": "lud",
+  "description": "LU decomposition (lud): in-place non-pivoting (Doolittle) factorization of a 2048x2048 float matrix.",
+  "phase1_inputs": {
+    "serial_source": "experiments/lud/serial/lud_serial.c",
+    "algorithm_doc": "experiments/lud/serial/ALGORITHM.md"
+  },
+  "serial_binary": "experiments/lud/serial/lud_serial",
+  "golden": "experiments/lud/golden/golden_2048.out",
+  "workload": {
+    "input_file": "data/lud/2048.dat"
+  },
+  "args_template": ["{input_file}", "{output_file}"],
+  "output_parser": {
+    "type": "indexed_float",
+    "comment": "Each line is '<index>\\t<value>'; compare column 2 (factored matrix cell) by index, row-major over N*N=4194304 cells."
+  },
+  "tolerance": {"rtol": 1e-2, "atol": 1e-2,
+                "comment": "Non-pivoting LU of this 2048x2048 matrix is ill-conditioned (cond~1.3e14); factor entries span 0..~6.6e4 (mean abs 26.6) and the sequential k-recurrence amplifies float32 rounding in the high-magnitude late rows. The intended phase-1 port is the STRAIGHTFORWARD data-parallel scheme (one thread per j, same increasing-k float accumulation as the serial), which reproduces the golden's accumulation order and matches bit-closely under --fmad=false; rtol/atol 1e-2 absorbs only minor benign float-order wiggle in the perimeter/column updates while flagging logic/indexing bugs, which corrupt the well-conditioned bulk and the L/U triangular layout. CAVEAT: a BLOCKED port (or any port that reassociates the k-accumulation) drifts far beyond this tolerance in the ill-conditioned tail and would be (correctly, for phase 1) rejected by an elementwise comparison; blocking is a phase-2 concern. Golden L,U reconstruct A with max relative residual 3.1e-3 (independent float64 check), confirming it is a valid factorization."},
+  "build": {
+    "compiler": "nvcc",
+    "correctness_flags": ["-O2", "-arch=sm_86", "--fmad=false"],
+    "perf_flags": ["-O2", "-arch=sm_86"],
+    "comment": "Correctness build disables FMA contraction to match the CPU serial bit-closely; perf build uses defaults (FMA on) for realistic timing."
+  },
+  "run": {"repeats": 5, "metric": "nsys_kernel_seconds", "timeout_seconds": 180,
+          "serial_compute_regex": "compute_seconds: ([0-9.]+)"}
+}

@@ -1,0 +1,15 @@
+{
+  "label": "sonnet_p2r2",
+  "benchmark": "lavaMD",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase2/sonnet/r2.cu",
+  "run_args": [
+    "10",
+    "/tmp/eval_s7tkyura/cand.out"
+  ],
+  "build_correctness": {
+    "ok": false,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase2/sonnet/r2.cu -o /tmp/eval_s7tkyura/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase2/sonnet/r2.cu(81): error: no instance of overloaded function \"__ldg\" matches the argument list\n            argument types are: (const FOUR_VECTOR *)\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase2/sonnet/r2.cu(92): error: no instance of overloaded function \"__ldg\" matches the argument list\n            argument types are: (const FOUR_VECTOR *)\n\n2 errors detected in the compilation of \"/home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase2/sonnet/r2.cu\".\n"
+  },
+  "status": "build_failed"
+}

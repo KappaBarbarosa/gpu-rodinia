@@ -1,0 +1,50 @@
+{
+  "label": "sonnet_nw_p2r1",
+  "benchmark": "nw",
+  "candidate": "experiments/nw/phase2/sonnet/r1.cu",
+  "run_args": [
+    "2048",
+    "10",
+    "/tmp/eval_iwlekylx/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/sonnet/r1.cu -o /tmp/eval_iwlekylx/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 0.6245305463671684,
+    "stderr": ""
+  },
+  "verify": {
+    "ok": false,
+    "n": 4198401,
+    "mismatches": 4192688,
+    "max_abs_err": 2278.0,
+    "max_rel_err": 2248.0,
+    "first_mismatch_index": 2050,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/sonnet/r1.cu -o /tmp/eval_iwlekylx/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": 0.6146994885057211,
+    "nsys": {
+      "kernel_s": 0.001886772,
+      "htod_s": 0.003279522,
+      "dtoh_s": 0.006008605
+    }
+  },
+  "serial_compute_s": 0.017101,
+  "serial_wall_s": 0.5225607566535473,
+  "speedup_kernel_vs_serial_compute": 9.063628249730227,
+  "status": "incorrect"
+}

@@ -1,0 +1,71 @@
+{
+  "label": "sonnet_p2r2",
+  "benchmark": "hotspot3D",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r2.cu",
+  "run_args": [
+    "512",
+    "8",
+    "100",
+    "/tmp/eval_azls4nue/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r2.cu -o /tmp/eval_azls4nue/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 1.0541926566511393,
+    "stderr": "compute_seconds: 0.006053\n"
+  },
+  "verify": {
+    "ok": false,
+    "n": 2097152,
+    "mismatches": 2095995,
+    "max_abs_err": 245.95899999999997,
+    "max_rel_err": 0.6870689791166458,
+    "first_mismatch_index": 0,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 0.466313\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r2.cu -o /tmp/eval_azls4nue/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": 1.0510448683053255,
+    "nsys": {
+      "kernel_s": 0.005788081,
+      "htod_s": 0.001921766,
+      "dtoh_s": 0.000799426,
+      "kernel_breakdown": [
+        {
+          "name": "stencil_kernel_nz8_multi(float *, float *, const float *, int, int, int, float, ",
+          "count": 1,
+          "avg_us": 5788.08,
+          "total_ms": 5.7881
+        },
+        {
+          "name": "[CUDA memcpy HtoD]",
+          "count": 2,
+          "avg_us": 960.88,
+          "total_ms": 1.9218
+        },
+        {
+          "name": "[CUDA memcpy DtoH]",
+          "count": 1,
+          "avg_us": 799.43,
+          "total_ms": 0.7994
+        }
+      ]
+    }
+  },
+  "serial_compute_s": 0.713176,
+  "serial_wall_s": 1.5875601563602686,
+  "speedup_kernel_vs_serial_compute": 123.21458528310161,
+  "status": "incorrect"
+}

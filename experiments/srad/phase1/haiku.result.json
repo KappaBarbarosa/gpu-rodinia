@@ -1,0 +1,56 @@
+{
+  "label": "haiku_p1",
+  "benchmark": "srad",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase1/haiku.cu",
+  "run_args": [
+    "2048",
+    "2048",
+    "0",
+    "127",
+    "0",
+    "127",
+    "0.5",
+    "100",
+    "/tmp/eval_8unl7jr9/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase1/haiku.cu -o /tmp/eval_8unl7jr9/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase1/haiku.cu(47): warning #177-D: variable \"size_R\" was declared but never referenced\n\n"
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 1.3484106864780188,
+    "stderr": "compute_seconds: 0.264781\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 4194304,
+    "mismatches": 0,
+    "max_abs_err": 1.0000000000065512e-05,
+    "max_rel_err": 7.535908604549814e-06,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 11.273107\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase1/haiku.cu -o /tmp/eval_8unl7jr9/cand_perf",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase1/haiku.cu(47): warning #177-D: variable \"size_R\" was declared but never referenced\n\n"
+  },
+  "timing": {
+    "median_wall_s": 1.3486557733267546,
+    "nsys": {
+      "kernel_s": 0.240722595,
+      "htod_s": 0.002095413,
+      "dtoh_s": 0.001769363
+    }
+  },
+  "serial_compute_s": 6.656173,
+  "serial_wall_s": 7.705350119620562,
+  "speedup_kernel_vs_serial_compute": 27.650802784009535,
+  "status": "ok"
+}

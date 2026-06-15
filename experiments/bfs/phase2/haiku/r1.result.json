@@ -1,0 +1,15 @@
+{
+  "label": "haiku_p2r1",
+  "benchmark": "bfs",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/haiku/r1.cu",
+  "run_args": [
+    "/home/marl2025/pp_final/gpu-rodinia/data/bfs/graph1MW_6.txt",
+    "/tmp/eval_oita2_if/cand.out"
+  ],
+  "build_correctness": {
+    "ok": false,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/haiku/r1.cu -o /tmp/eval_oita2_if/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/haiku/r1.cu(48): error: no instance of overloaded function \"atomicExch\" matches the argument list\n            argument types are: (unsigned char *, unsigned char)\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/haiku/r1.cu(127): warning #1650-D: result of call is not used\n\n1 error detected in the compilation of \"/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/haiku/r1.cu\".\n"
+  },
+  "status": "build_failed"
+}

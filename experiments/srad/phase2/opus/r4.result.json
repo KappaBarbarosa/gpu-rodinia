@@ -1,0 +1,56 @@
+{
+  "label": "opus_p2r4",
+  "benchmark": "srad",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase2/opus/r4.cu",
+  "run_args": [
+    "2048",
+    "2048",
+    "0",
+    "127",
+    "0",
+    "127",
+    "0.5",
+    "100",
+    "/tmp/eval_eev_yu8_/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase2/opus/r4.cu -o /tmp/eval_eev_yu8_/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 1.323443291708827,
+    "stderr": "compute_seconds: 0.183587\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 4194304,
+    "mismatches": 0,
+    "max_abs_err": 3.999999999981796e-05,
+    "max_rel_err": 2.4175465528698064e-05,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 6.625539\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase2/opus/r4.cu -o /tmp/eval_eev_yu8_/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": 1.3151886351406574,
+    "nsys": {
+      "kernel_s": 0.165446943,
+      "htod_s": 0.001893646,
+      "dtoh_s": 0.001584844
+    }
+  },
+  "serial_compute_s": 6.6909,
+  "serial_wall_s": 7.634174104779959,
+  "speedup_kernel_vs_serial_compute": 40.44136373072786,
+  "status": "ok"
+}

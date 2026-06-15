@@ -1,0 +1,45 @@
+{
+  "label": "sonnet_nw_p2r2",
+  "benchmark": "nw",
+  "candidate": "experiments/nw/phase2/sonnet/r2.cu",
+  "run_args": [
+    "2048",
+    "10",
+    "/tmp/eval_mt_e_6vj/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/sonnet/r2.cu -o /tmp/eval_mt_e_6vj/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/sonnet/r2.cu(177): warning #177-D: variable \"start_col\" was declared but never referenced\n\n"
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 0.8239238299429417,
+    "stderr": ""
+  },
+  "verify": {
+    "ok": false,
+    "reason": "no output produced"
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "204\t0\n4198205\t0\n4198206\t0\n4198207\t0\n4198208\t0\n4198209\t0\n4198210\t0\n4198211\t0\n4198212\t0\n4198213\t0\n4198214\t0\n4198215\t0\n4198216\t0\n4198217\t0\n4198218\t0\n4198219\t0\n4198220\t0\n4198221\t0\n4198222\t0\n4198223\t0\n4198224\t0\n4198225\t0\n4198226\t0\n4198227\t0\n4198228\t0\n4198229\t0\n4198230\t0\n4198231\t0\n4198232\t0\n4198233\t0\n4198234\t0\n4198235\t0\n4198236\t0\n4198237\t0\n4198238\t0\n4198239\t0\n4198240\t0\n4198241\t0\n4198242\t0\n4198243\t0\n4198244\t0\n4198245\t0\n4198246\t0\n4198247\t0\n4198248\t0\n4198249\t0\n4198250\t0\n4198251\t0\n4198252\t0\n4198253\t0\n4198254\t0\n4198255\t0\n4198256\t0\n4198257\t0\n4198258\t0\n4198259\t0\n4198260\t0\n4198261\t0\n4198262\t0\n4198263\t0\n4198264\t0\n4198265\t0\n4198266\t0\n4198267\t0\n4198268\t0\n4198269\t0\n4198270\t0\n4198271\t0\n4198272\t0\n4198273\t0\n4198274\t0\n4198275\t0\n4198276\t0\n4198277\t0\n4198278\t0\n4198279\t0\n4198280\t0\n4198281\t0\n4198282\t0\n4198283\t0\n4198284\t0\n4198285\t0\n4198286\t0\n4198287\t0\n4198288\t0\n4198289\t0\n4198290\t0\n4198291\t0\n4198292\t0\n4198293\t0\n4198294\t0\n4198295\t0\n4198296\t0\n4198297\t0\n4198298\t0\n4198299\t0\n4198300\t0\n4198301\t0\n4198302\t0\n4198303\t0\n4198304\t0\n4198305\t0\n4198306\t0\n4198307\t0\n4198308\t0\n4198309\t0\n4198310\t0\n4198311\t0\n4198312\t0\n4198313\t0\n4198314\t0\n4198315\t0\n4198316\t0\n4198317\t0\n4198318\t0\n4198319\t0\n4198320\t0\n4198321\t0\n4198322\t0\n4198323\t0\n4198324\t0\n4198325\t0\n4198326\t0\n4198327\t0\n4198328\t0\n4198329\t0\n4198330\t0\n4198331\t0\n4198332\t0\n4198333\t0\n4198334\t0\n4198335\t0\n4198336\t0\n4198337\t0\n4198338\t0\n4198339\t0\n4198340\t0\n4198341\t0\n4198342\t0\n4198343\t0\n4198344\t0\n4198345\t0\n4198346\t0\n4198347\t0\n4198348\t0\n4198349\t0\n4198350\t0\n4198351\t0\n4198352\t0\n4198353\t0\n4198354\t0\n4198355\t0\n4198356\t0\n4198357\t0\n4198358\t0\n4198359\t0\n4198360\t0\n4198361\t0\n4198362\t0\n4198363\t0\n4198364\t0\n4198365\t0\n4198366\t0\n4198367\t0\n4198368\t0\n4198369\t0\n4198370\t0\n4198371\t0\n4198372\t0\n4198373\t0\n4198374\t0\n4198375\t0\n4198376\t0\n4198377\t0\n4198378\t0\n4198379\t0\n4198380\t0\n4198381\t0\n4198382\t0\n4198383\t0\n4198384\t0\n4198385\t0\n4198386\t0\n4198387\t0\n4198388\t0\n4198389\t0\n4198390\t0\n4198391\t0\n4198392\t0\n4198393\t0\n4198394\t0\n4198395\t0\n4198396\t0\n4198397\t0\n4198398\t0\n4198399\t0\n4198400\t0\n========= ERROR SUMMARY: 0 errors\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/sonnet/r2.cu -o /tmp/eval_mt_e_6vj/cand_perf",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/sonnet/r2.cu(177): warning #177-D: variable \"start_col\" was declared but never referenced\n\n"
+  },
+  "timing": {
+    "median_wall_s": 0.818739041686058,
+    "nsys": {
+      "kernel_s": 0.00236396,
+      "htod_s": 0.005154066,
+      "dtoh_s": 0.009281689
+    }
+  },
+  "serial_compute_s": 0.009033,
+  "serial_wall_s": 0.5074264984577894,
+  "speedup_kernel_vs_serial_compute": 3.8211306451885814,
+  "status": "incorrect"
+}

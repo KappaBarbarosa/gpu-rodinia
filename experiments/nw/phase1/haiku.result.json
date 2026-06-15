@@ -1,0 +1,16 @@
+{
+  "label": "haiku_nw_p1",
+  "benchmark": "nw",
+  "candidate": "experiments/nw/phase1/haiku.cu",
+  "run_args": [
+    "2048",
+    "10",
+    "/tmp/eval_8ma9tmtl/cand.out"
+  ],
+  "build_correctness": {
+    "ok": false,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase1/haiku.cu -o /tmp/eval_8ma9tmtl/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase1/haiku.cu(53): error: calling a __host__ function(\"maximum(int, int, int)\") from a __global__ function(\"nw_kernel\") is not allowed\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase1/haiku.cu(53): error: identifier \"maximum\" is undefined in device code\n\n2 errors detected in the compilation of \"/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase1/haiku.cu\".\n"
+  },
+  "status": "build_failed"
+}

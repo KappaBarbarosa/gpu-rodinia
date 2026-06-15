@@ -1,0 +1,71 @@
+{
+  "label": "opus_p2r1",
+  "benchmark": "hotspot3D",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/opus/r1.cu",
+  "run_args": [
+    "512",
+    "8",
+    "100",
+    "/tmp/eval_u3sp3_ek/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/opus/r1.cu -o /tmp/eval_u3sp3_ek/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 1.135085977613926,
+    "stderr": "compute_seconds: 0.006559\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 2097152,
+    "mismatches": 0,
+    "max_abs_err": 0.0,
+    "max_rel_err": 0.0,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 1.395668\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/opus/r1.cu -o /tmp/eval_u3sp3_ek/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": 1.086666626855731,
+    "nsys": {
+      "kernel_s": 0.006571775,
+      "htod_s": 0.001812593,
+      "dtoh_s": 0.000891177,
+      "kernel_breakdown": [
+        {
+          "name": "stencil_kernel(const float *, float *, const float *, int, int, int)",
+          "count": 100,
+          "avg_us": 65.72,
+          "total_ms": 6.5718
+        },
+        {
+          "name": "[CUDA memcpy HtoD]",
+          "count": 11,
+          "avg_us": 164.78,
+          "total_ms": 1.8126
+        },
+        {
+          "name": "[CUDA memcpy DtoH]",
+          "count": 1,
+          "avg_us": 891.18,
+          "total_ms": 0.8912
+        }
+      ]
+    }
+  },
+  "serial_compute_s": 0.745061,
+  "serial_wall_s": 1.6823180224746466,
+  "speedup_kernel_vs_serial_compute": 113.37287110407766,
+  "status": "ok"
+}

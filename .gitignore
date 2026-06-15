@@ -22,3 +22,6 @@ experiments/**/*_serial
 # superseded / contaminated experiment runs (kept on disk, not versioned)
 experiments/*/_archive_*/
 experiments/*/_run_*/
+
+# assignment template (separate upstream repo)
+/padp-final-templates/

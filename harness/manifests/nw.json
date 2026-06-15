@@ -1,0 +1,29 @@
+{
+  "name": "nw",
+  "description": "Needleman-Wunsch global sequence alignment (wavefront DP).",
+  "phase1_inputs": {
+    "serial_source": "experiments/nw/serial/nw_serial.c",
+    "algorithm_doc": "experiments/nw/serial/ALGORITHM.md"
+  },
+  "serial_binary": "experiments/nw/serial/nw_serial",
+  "golden": "experiments/nw/golden/golden_2048_10.out",
+  "workload": {
+    "dimension": 2048,
+    "penalty": 10
+  },
+  "args_template": ["{dimension}", "{penalty}", "{output_file}"],
+  "output_parser": {
+    "type": "indexed_int",
+    "comment": "Each line is '<index>\\t<value>'; integer DP scores, compared exactly."
+  },
+  "tolerance": {"rtol": 0, "atol": 0,
+                "comment": "Integer DP scores — exact match required."},
+  "build": {
+    "compiler": "nvcc",
+    "correctness_flags": ["-O2", "-arch=sm_86"],
+    "perf_flags": ["-O2", "-arch=sm_86"],
+    "comment": "Integer math; no FMA concerns, so correctness and perf builds are identical."
+  },
+  "run": {"repeats": 5, "metric": "nsys_kernel_seconds", "timeout_seconds": 180,
+          "serial_compute_regex": "compute_seconds: ([0-9.]+)"}
+}

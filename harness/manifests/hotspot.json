@@ -1,0 +1,32 @@
+{
+  "name": "hotspot",
+  "description": "2D transient thermal stencil simulation.",
+  "phase1_inputs": {
+    "serial_source": "experiments/hotspot/serial/hotspot_serial.c",
+    "algorithm_doc": "experiments/hotspot/serial/ALGORITHM.md"
+  },
+  "serial_binary": "experiments/hotspot/serial/hotspot_serial",
+  "golden": "experiments/hotspot/golden/golden_1024_1000.out",
+  "workload": {
+    "grid_rows": 1024,
+    "grid_cols": 1024,
+    "sim_time": 1000,
+    "temp_file": "data/hotspot/temp_1024",
+    "power_file": "data/hotspot/power_1024"
+  },
+  "args_template": ["{grid_rows}", "{grid_cols}", "{sim_time}", "{temp_file}", "{power_file}", "{output_file}"],
+  "output_parser": {
+    "type": "indexed_float",
+    "comment": "Each line is '<index>\\t<value>'; compare column 2 (value) by index."
+  },
+  "tolerance": {"rtol": 1e-5, "atol": 1e-4,
+                "comment": "Correct --fmad=false ports are bit-exact vs the CPU golden (err~0), so a tight tolerance catches real logic bugs even when the workload evolves the field only slightly."},
+  "build": {
+    "compiler": "nvcc",
+    "correctness_flags": ["-O2", "-arch=sm_86", "--fmad=false"],
+    "perf_flags": ["-O2", "-arch=sm_86"],
+    "comment": "Correctness build disables FMA contraction to match the CPU serial bit-closely; perf build uses defaults (FMA on) for realistic timing."
+  },
+  "run": {"repeats": 5, "metric": "nsys_kernel_seconds", "timeout_seconds": 180,
+          "serial_compute_regex": "compute_seconds: ([0-9.]+)"}
+}

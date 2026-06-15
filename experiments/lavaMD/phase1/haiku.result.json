@@ -1,0 +1,49 @@
+{
+  "label": "haiku_p1",
+  "benchmark": "lavaMD",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase1/haiku.cu",
+  "run_args": [
+    "10",
+    "/tmp/eval_4511goo1/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase1/haiku.cu -o /tmp/eval_4511goo1/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase1/haiku.cu(59): warning #177-D: variable \"qA\" was declared but never referenced\n\n"
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 0.3750874139368534,
+    "stderr": "compute_seconds: 0.001470\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 400000,
+    "mismatches": 0,
+    "max_abs_err": 0.0004890000000159489,
+    "max_rel_err": 9.438637060801486e-05,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 0.832572\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase1/haiku.cu -o /tmp/eval_4511goo1/cand_perf",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase1/haiku.cu(59): warning #177-D: variable \"qA\" was declared but never referenced\n\n"
+  },
+  "timing": {
+    "median_wall_s": 0.3736919090151787,
+    "nsys": {
+      "kernel_s": 0.001299662,
+      "htod_s": 0.000357125,
+      "dtoh_s": 0.000123169
+    }
+  },
+  "serial_compute_s": 2.102421,
+  "serial_wall_s": 2.346711453050375,
+  "speedup_kernel_vs_serial_compute": 1617.6675166312473,
+  "status": "ok"
+}

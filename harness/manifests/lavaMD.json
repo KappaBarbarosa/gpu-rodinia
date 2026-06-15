@@ -1,0 +1,28 @@
+{
+  "name": "lavaMD",
+  "description": "lavaMD molecular-dynamics: per-particle Gaussian-screened force/potential summed over the home box + 26 neighbour boxes (data-parallel over particles).",
+  "phase1_inputs": {
+    "serial_source": "experiments/lavaMD/serial/lavaMD_serial.c",
+    "algorithm_doc": "experiments/lavaMD/serial/ALGORITHM.md"
+  },
+  "serial_binary": "experiments/lavaMD/serial/lavaMD_serial",
+  "golden": "experiments/lavaMD/golden/golden_10.out",
+  "workload": {
+    "boxes1d": 10
+  },
+  "args_template": ["{boxes1d}", "{output_file}"],
+  "output_parser": {
+    "type": "indexed_float",
+    "comment": "Each line is '<index>\\t<value>'; 4 values per particle (v,x,y,z), box-major. Compare column 2 by index. Total lines = 4 * boxes1d^3 * 100 = 400000."
+  },
+  "tolerance": {"rtol": 1e-3, "atol": 1e-2,
+                "comment": "float32 force sum reordered by a correct GPU port (one block/box, one thread/particle). Measured drift at boxes1d=10: reversed-order vs serial-order float32 max_rel=1.7e-4 (max_abs=7.3e-3); float64 vs float32 max_rel=3.4e-4 (max_abs=8.0e-3) on values up to ~2600. Well-conditioned (lavaMD is oracle-compatible, unlike lud). rtol/atol set ~3x above observed drift to absorb benign reduction-order differences while catching real logic/indexing bugs."},
+  "build": {
+    "compiler": "nvcc",
+    "correctness_flags": ["-O2", "-arch=sm_86", "--fmad=false"],
+    "perf_flags": ["-O2", "-arch=sm_86"],
+    "comment": "Correctness build disables FMA contraction to reduce drift vs the CPU serial; perf build uses defaults (FMA on) for realistic timing. Note the float reduction is reordered by any GPU port, so the tolerance (not bit-exactness) is what gates correctness."
+  },
+  "run": {"repeats": 5, "metric": "nsys_kernel_seconds", "timeout_seconds": 180,
+          "serial_compute_regex": "compute_seconds: ([0-9.]+)"}
+}

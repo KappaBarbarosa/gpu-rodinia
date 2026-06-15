@@ -1,0 +1,16 @@
+{
+  "label": "haiku_nw_p2r4",
+  "benchmark": "nw",
+  "candidate": "experiments/nw/phase2/haiku/r4.cu",
+  "run_args": [
+    "2048",
+    "10",
+    "/tmp/eval_6u_qqec1/cand.out"
+  ],
+  "build_correctness": {
+    "ok": false,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/haiku/r4.cu -o /tmp/eval_6u_qqec1/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/haiku/r4.cu(100): warning #20094-D: a host variable \"BLOSUM62\" cannot be directly read in a device function\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/haiku/r4.cu(98): error: calling a __host__ function(\"char_to_index(char)\") from a __global__ function(\"nw_kernel\") is not allowed\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/haiku/r4.cu(98): error: identifier \"char_to_index\" is undefined in device code\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/haiku/r4.cu(99): error: calling a __host__ function(\"char_to_index(char)\") from a __global__ function(\"nw_kernel\") is not allowed\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/haiku/r4.cu(99): error: identifier \"char_to_index\" is undefined in device code\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/haiku/r4.cu(100): error: identifier \"BLOSUM62\" is undefined in device code\n\n5 errors detected in the compilation of \"/home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/haiku/r4.cu\".\n"
+  },
+  "status": "build_failed"
+}

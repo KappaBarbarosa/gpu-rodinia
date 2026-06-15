@@ -1,0 +1,50 @@
+{
+  "label": "haiku_p2r1",
+  "benchmark": "pathfinder",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/pathfinder/phase2/haiku/r1.cu",
+  "run_args": [
+    "100000",
+    "1000",
+    "/tmp/eval_15zimbhl/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/pathfinder/phase2/haiku/r1.cu -o /tmp/eval_15zimbhl/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 1.106289979070425,
+    "stderr": "compute_seconds: 0.002905\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 100000,
+    "mismatches": 0,
+    "max_abs_err": 0.0,
+    "max_rel_err": 0.0,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 0.371661\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/pathfinder/phase2/haiku/r1.cu -o /tmp/eval_15zimbhl/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": 1.116806037724018,
+    "nsys": {
+      "kernel_s": 0.003181881,
+      "htod_s": 0.046810465,
+      "dtoh_s": 3.1296e-05
+    }
+  },
+  "serial_compute_s": 0.131923,
+  "serial_wall_s": 1.1652605384588242,
+  "speedup_kernel_vs_serial_compute": 41.46069573312138,
+  "status": "ok"
+}

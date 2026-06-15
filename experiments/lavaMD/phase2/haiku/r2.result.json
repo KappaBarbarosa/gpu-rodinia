@@ -1,0 +1,49 @@
+{
+  "label": "haiku_p2r2",
+  "benchmark": "lavaMD",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase2/haiku/r2.cu",
+  "run_args": [
+    "10",
+    "/tmp/eval_jzscflcv/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase2/haiku/r2.cu -o /tmp/eval_jzscflcv/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 0.3858777806162834,
+    "stderr": "compute_seconds: 0.001137\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 400000,
+    "mismatches": 0,
+    "max_abs_err": 0.0004890000000159489,
+    "max_rel_err": 9.438637060801486e-05,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 0.078530\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/lavaMD/phase2/haiku/r2.cu -o /tmp/eval_jzscflcv/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": 0.37284854240715504,
+    "nsys": {
+      "kernel_s": 0.000894568,
+      "htod_s": 0.000356804,
+      "dtoh_s": 0.000123266
+    }
+  },
+  "serial_compute_s": 2.139588,
+  "serial_wall_s": 2.3937991596758366,
+  "speedup_kernel_vs_serial_compute": 2391.7555736400136,
+  "status": "ok"
+}

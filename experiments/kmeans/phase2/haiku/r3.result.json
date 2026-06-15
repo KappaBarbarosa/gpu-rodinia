@@ -1,0 +1,18 @@
+{
+  "label": "haiku_p2r3",
+  "benchmark": "kmeans",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/kmeans/phase2/haiku/r3.cu",
+  "run_args": [
+    "65536",
+    "34",
+    "5",
+    "20",
+    "/tmp/eval_zibgp8iw/cand.out"
+  ],
+  "build_correctness": {
+    "ok": false,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/kmeans/phase2/haiku/r3.cu -o /tmp/eval_zibgp8iw/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/kmeans/phase2/haiku/r3.cu(106): error: identifier \"c_clusters\" is undefined\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/kmeans/phase2/haiku/r3.cu(111): error: a __global__ function call must be configured\n\n2 errors detected in the compilation of \"/home/marl2025/pp_final/gpu-rodinia/experiments/kmeans/phase2/haiku/r3.cu\".\n"
+  },
+  "status": "build_failed"
+}
