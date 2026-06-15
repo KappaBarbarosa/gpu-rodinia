@@ -1,0 +1,72 @@
+{
+  "label": "sonnet_p1",
+  "benchmark": "kmeans",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/kmeans/phase1/sonnet.cu",
+  "run_args": [
+    "65536",
+    "34",
+    "5",
+    "20",
+    "/tmp/eval_qljzloys/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/kmeans/phase1/sonnet.cu -o /tmp/eval_qljzloys/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 0.1984713077545166,
+    "stderr": "compute_seconds=0.028474\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 65536,
+    "mismatches": 0,
+    "max_abs_err": 0.0,
+    "max_rel_err": 0.0,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds=0.371051\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/kmeans/phase1/sonnet.cu -o /tmp/eval_qljzloys/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": 0.16998817957937717,
+    "nsys": {
+      "kernel_s": 0.002413076,
+      "htod_s": 0.001039175,
+      "dtoh_s": 0.00042016,
+      "kernel_breakdown": [
+        {
+          "name": "assign_kernel(const float *, const float *, int *, int, int, int)",
+          "count": 20,
+          "avg_us": 120.65,
+          "total_ms": 2.4131
+        },
+        {
+          "name": "[CUDA memcpy HtoD]",
+          "count": 21,
+          "avg_us": 49.48,
+          "total_ms": 1.0392
+        },
+        {
+          "name": "[CUDA memcpy DtoH]",
+          "count": 20,
+          "avg_us": 21.01,
+          "total_ms": 0.4202
+        }
+      ]
+    }
+  },
+  "serial_compute_s": 0.189829,
+  "serial_wall_s": 0.2369130365550518,
+  "speedup_kernel_vs_serial_compute": 78.66681364366477,
+  "status": "ok"
+}

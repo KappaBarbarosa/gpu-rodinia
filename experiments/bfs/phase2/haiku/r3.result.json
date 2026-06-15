@@ -1,0 +1,15 @@
+{
+  "label": "haiku_p2r3",
+  "benchmark": "bfs",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/haiku/r3.cu",
+  "run_args": [
+    "/home/marl2025/pp_final/gpu-rodinia/data/bfs/graph1MW_6.txt",
+    "/tmp/eval_w28j3fbd/cand.out"
+  ],
+  "build_correctness": {
+    "ok": false,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/haiku/r3.cu -o /tmp/eval_w28j3fbd/cand_corr",
+    "stderr": "/usr/bin/ld: /tmp/tmpxft_0035a5ca_00000000-11_r3.o: in function `main':\ntmpxft_0035a5ca_00000000-6_r3.cudafe1.cpp:(.text.startup+0x595): undefined reference to `__device_builtin_variable_warpSize'\ncollect2: error: ld returned 1 exit status\n"
+  },
+  "status": "build_failed"
+}

@@ -1,0 +1,43 @@
+{
+  "label": "haiku_nw_p2r2",
+  "benchmark": "nw",
+  "candidate": "experiments/nw/phase2/haiku/r2.cu",
+  "run_args": [
+    "2048",
+    "10",
+    "/tmp/eval_c3qe06mg/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/haiku/r2.cu -o /tmp/eval_c3qe06mg/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": false,
+    "wall_s": 0.0012605488300323486,
+    "stderr": "Failed to read dimensions\n"
+  },
+  "verify": {
+    "ok": false,
+    "reason": "no output produced"
+  },
+  "memcheck": {
+    "clean": false,
+    "tail": "========= COMPUTE-SANITIZER\n========= Error: Target application terminated before first instrumented API call\n========= Tracking kernels launched by child processes requires the --target-processes all option.\nFailed to read dimensions\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/nw/phase2/haiku/r2.cu -o /tmp/eval_c3qe06mg/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": null,
+    "nsys": {
+      "error": "could not parse nsys output",
+      "raw_tail": "=================98% ] prof.sqlite\n[2/8] [========================99% ] prof.sqlite\n[2/8] [========================100%] prof.sqlite\n[2/8] [========================100%] prof.sqlite\n[3/8] Executing 'nvtxsum' stats report\n[4/8] Executing 'osrtsum' stats report\n\nOperating System Runtime API Statistics:\n\n Time (%)  Total Time (ns)  Num Calls  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)   Name \n --------  ---------------  ---------  --------  --------  --------  --------  -----------  ------\n    100.0            5,634          1   5,634.0   5,634.0     5,634     5,634          0.0  fwrite\n\n[5/8] Executing 'cudaapisum' stats report\n[6/8] Executing 'gpukernsum' stats report\n[7/8] Executing 'gpumemtimesum' stats report\n[8/8] Executing 'gpumemsizesum' stats report\nGenerated:\n    /tmp/eval_c3qe06mg/prof.nsys-rep\n    /tmp/eval_c3qe06mg/prof.sqlite\nWARNING: CPU sampling not supported, disabling.\nTry the 'nsys status --environment' command to learn more.\n\nWARNING: CPU context switch tracing not supported, disabling.\nTry the 'nsys status --environment' command to learn more.\n\nFailed to read dimensions\nSKIPPED: /tmp/eval_c3qe06mg/prof.sqlite does not contain NV Tools Extension (NVTX) data.\nSKIPPED: /tmp/eval_c3qe06mg/prof.sqlite does not contain CUDA trace data.\nSKIPPED: /tmp/eval_c3qe06mg/prof.sqlite does not contain CUDA kernel data.\nSKIPPED: /tmp/eval_c3qe06mg/prof.sqlite does not contain GPU memory data.\nSKIPPED: /tmp/eval_c3qe06mg/prof.sqlite does not contain GPU memory data.\n"
+    }
+  },
+  "serial_compute_s": 0.020467,
+  "serial_wall_s": 0.5052010398358107,
+  "status": "incorrect"
+}

@@ -1,0 +1,49 @@
+{
+  "label": "bfs_smoke",
+  "benchmark": "bfs",
+  "candidate": "harness/_smoketest/bfs_naive.cu",
+  "run_args": [
+    "/home/marl2025/pp_final/gpu-rodinia/data/bfs/graph1MW_6.txt",
+    "/tmp/eval_djneh0xy/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu -o /tmp/eval_djneh0xy/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(28): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(31): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(32): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(33): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(35): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(28): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(31): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(32): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(33): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(35): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu: In function \u2018int main(int, char**)\u2019:\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu:28:14: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   28 |     int N; fscanf(fp, \"%d\", &N);\n      |        ~~~~~~^~~~~~~~~~~~~~\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu:31:47: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   31 |     for (int i=0;i<N;i++){int s,d;fscanf(fp,\"%d %d\",&s,&d);hn[i].starting=s;hn[i].no_of_edges=d;hcost[i]=-1;}\n      |                                         ~~~~~~^~~~~~~~~~~~~~~~~~~~~\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu:32:16: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   32 |     int src; fscanf(fp,\"%d\",&src); src=0;\n      |          ~~~~~~^~~~~~~~~~~~~~~~\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu:33:14: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   33 |     int E; fscanf(fp,\"%d\",&E);\n      |        ~~~~~~^~~~~~~~~~~~~~\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu:35:48: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   35 |     for(int i=0;i<E;i++){int id,c;fscanf(fp,\"%d %d\",&id,&c);he[i]=id;}\n      |                                          ~~~~~~^~~~~~~~~~~~~~~~~~~~~~\n"
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 1.098030624911189,
+    "stderr": ""
+  },
+  "verify": {
+    "ok": true,
+    "n": 1000000,
+    "mismatches": 0,
+    "max_abs_err": 0.0,
+    "max_rel_err": 0.0,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu -o /tmp/eval_djneh0xy/cand_perf",
+    "stderr": "f call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(33): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu(35): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu: In function \u2018int main(int, char**)\u2019:\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu:28:14: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   28 |     int N; fscanf(fp, \"%d\", &N);\n      |        ~~~~~~^~~~~~~~~~~~~~\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu:31:47: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   31 |     for (int i=0;i<N;i++){int s,d;fscanf(fp,\"%d %d\",&s,&d);hn[i].starting=s;hn[i].no_of_edges=d;hcost[i]=-1;}\n      |                                         ~~~~~~^~~~~~~~~~~~~~~~~~~~~\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu:32:16: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   32 |     int src; fscanf(fp,\"%d\",&src); src=0;\n      |          ~~~~~~^~~~~~~~~~~~~~~~\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu:33:14: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   33 |     int E; fscanf(fp,\"%d\",&E);\n      |        ~~~~~~^~~~~~~~~~~~~~\n/home/marl2025/pp_final/gpu-rodinia/harness/_smoketest/bfs_naive.cu:35:48: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   35 |     for(int i=0;i<E;i++){int id,c;fscanf(fp,\"%d %d\",&id,&c);he[i]=id;}\n      |                                          ~~~~~~^~~~~~~~~~~~~~~~~~~~~~\n"
+  },
+  "timing": {
+    "median_wall_s": 1.0767869260162115,
+    "nsys": {
+      "kernel_s": 0.000914411,
+      "htod_s": 0.004348717,
+      "dtoh_s": 0.000541703
+    }
+  },
+  "serial_compute_s": 0.07808,
+  "serial_wall_s": 0.9844983853399754,
+  "speedup_kernel_vs_serial_compute": 85.38829913463421,
+  "status": "ok"
+}

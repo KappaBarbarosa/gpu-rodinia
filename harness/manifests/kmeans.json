@@ -1,0 +1,41 @@
+{
+  "name": "kmeans",
+  "benchmark": "kmeans",
+  "description": "K-Means clustering: assign step parallelized on GPU, update step on CPU",
+  "serial_binary": "experiments/kmeans/serial/kmeans_serial",
+  "phase1_inputs": {
+    "serial_source": "experiments/kmeans/serial/kmeans_serial.c",
+    "algorithm_doc": "experiments/kmeans/serial/ALGORITHM.md"
+  },
+  "workload": {
+    "npoints": 65536,
+    "nfeatures": 34,
+    "nclusters": 5,
+    "max_iter": 20
+  },
+  "args_template": ["{npoints}", "{nfeatures}", "{nclusters}", "{max_iter}", "{output_file}"],
+  "golden": "experiments/kmeans/golden/golden_65536_34_5_20.out",
+  "tolerance": {
+    "rtol": 0,
+    "atol": 0,
+    "comment": "integer membership output, exact match required"
+  },
+  "output_parser": {
+    "type": "indexed_int",
+    "comment": "Each line is '<index>\\t<cluster_id>'; integer, exact match."
+  },
+  "build": {
+    "compiler": "nvcc",
+    "correctness_flags": ["-O2", "-arch=sm_86"],
+    "perf_flags": ["-O2", "-arch=sm_86"],
+    "comment": "Integer output; no --fmad=false needed."
+  },
+  "run": {
+    "repeats": 5,
+    "metric": "nsys_kernel_seconds",
+    "timeout_seconds": 120,
+    "serial_compute_regex": "compute_seconds=([0-9.]+)"
+  },
+  "serial_compute_seconds": 0.1706,
+  "notes": "Update step must stay on CPU to guarantee identical centroid trajectory as serial reference."
+}

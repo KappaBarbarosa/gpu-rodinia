@@ -1,0 +1,82 @@
+{
+  "label": "opus_p2r3v2",
+  "benchmark": "srad",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase2/opus/r3_v2.cu",
+  "run_args": [
+    "2048",
+    "2048",
+    "0",
+    "127",
+    "0",
+    "127",
+    "0.5",
+    "100",
+    "/tmp/eval_ze328_au/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase2/opus/r3_v2.cu -o /tmp/eval_ze328_au/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 1.0608819983899593,
+    "stderr": "compute_seconds: 0.020780\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 4194304,
+    "mismatches": 0,
+    "max_abs_err": 1.999999999990898e-05,
+    "max_rel_err": 1.1407711612998504e-05,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 2.381402\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/srad/phase2/opus/r3_v2.cu -o /tmp/eval_ze328_au/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": 1.1199554353952408,
+    "nsys": {
+      "kernel_s": 0.019701833,
+      "htod_s": 0.001955252,
+      "dtoh_s": 0.00154136,
+      "kernel_breakdown": [
+        {
+          "name": "srad_kernel(const float *, float *, const float *, float, int, int)",
+          "count": 100,
+          "avg_us": 130.11,
+          "total_ms": 13.011
+        },
+        {
+          "name": "reduce_roi(const float *, int, int, int, int, int, int, float *)",
+          "count": 100,
+          "avg_us": 66.91,
+          "total_ms": 6.6909
+        },
+        {
+          "name": "[CUDA memcpy HtoD]",
+          "count": 1,
+          "avg_us": 1955.25,
+          "total_ms": 1.9553
+        },
+        {
+          "name": "[CUDA memcpy DtoH]",
+          "count": 1,
+          "avg_us": 1541.36,
+          "total_ms": 1.5414
+        }
+      ]
+    }
+  },
+  "serial_compute_s": 6.646989,
+  "serial_wall_s": 7.570924820378423,
+  "speedup_kernel_vs_serial_compute": 337.37921745656865,
+  "status": "ok"
+}

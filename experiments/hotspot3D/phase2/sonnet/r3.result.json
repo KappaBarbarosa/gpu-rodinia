@@ -1,0 +1,71 @@
+{
+  "label": "sonnet_p2r3",
+  "benchmark": "hotspot3D",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r3.cu",
+  "run_args": [
+    "512",
+    "8",
+    "100",
+    "/tmp/eval_b0r02kwt/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r3.cu -o /tmp/eval_b0r02kwt/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 1.045397575944662,
+    "stderr": "compute_seconds: 0.006708\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 2097152,
+    "mismatches": 0,
+    "max_abs_err": 0.0010000000000331966,
+    "max_rel_err": 4.269016333276875e-06,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 2.404583\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r3.cu -o /tmp/eval_b0r02kwt/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": 1.0384051874279976,
+    "nsys": {
+      "kernel_s": 0.006661834,
+      "htod_s": 0.001914668,
+      "dtoh_s": 0.000803685,
+      "kernel_breakdown": [
+        {
+          "name": "stencil_nz8(const float *, float *, const float *, int, int, float, float, float",
+          "count": 100,
+          "avg_us": 66.62,
+          "total_ms": 6.6618
+        },
+        {
+          "name": "[CUDA memcpy HtoD]",
+          "count": 2,
+          "avg_us": 957.33,
+          "total_ms": 1.9147
+        },
+        {
+          "name": "[CUDA memcpy DtoH]",
+          "count": 1,
+          "avg_us": 803.68,
+          "total_ms": 0.8037
+        }
+      ]
+    }
+  },
+  "serial_compute_s": 0.709103,
+  "serial_wall_s": 1.5883119199424982,
+  "speedup_kernel_vs_serial_compute": 106.4426102481689,
+  "status": "ok"
+}

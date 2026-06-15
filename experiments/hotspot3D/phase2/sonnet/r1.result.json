@@ -1,0 +1,71 @@
+{
+  "label": "sonnet_p2r1",
+  "benchmark": "hotspot3D",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r1.cu",
+  "run_args": [
+    "512",
+    "8",
+    "100",
+    "/tmp/eval_7hn37ark/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r1.cu -o /tmp/eval_7hn37ark/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r1.cu(118): warning #177-D: variable \"pw\" was declared but never referenced\n\n"
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 1.0558922439813614,
+    "stderr": "compute_seconds: 0.006959\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 2097152,
+    "mismatches": 0,
+    "max_abs_err": 0.0010000000000331966,
+    "max_rel_err": 4.269016333276875e-06,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 1.027336\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r1.cu -o /tmp/eval_7hn37ark/cand_perf",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/hotspot3D/phase2/sonnet/r1.cu(118): warning #177-D: variable \"pw\" was declared but never referenced\n\n"
+  },
+  "timing": {
+    "median_wall_s": 1.0874184500426054,
+    "nsys": {
+      "kernel_s": 0.006909283,
+      "htod_s": 0.001838257,
+      "dtoh_s": 0.000783623,
+      "kernel_breakdown": [
+        {
+          "name": "stencil_kernel(const float *, float *, const float *, int, int, int, float, floa",
+          "count": 100,
+          "avg_us": 69.09,
+          "total_ms": 6.9093
+        },
+        {
+          "name": "[CUDA memcpy HtoD]",
+          "count": 2,
+          "avg_us": 919.13,
+          "total_ms": 1.8383
+        },
+        {
+          "name": "[CUDA memcpy DtoH]",
+          "count": 1,
+          "avg_us": 783.62,
+          "total_ms": 0.7836
+        }
+      ]
+    }
+  },
+  "serial_compute_s": 0.722856,
+  "serial_wall_s": 1.615470115095377,
+  "speedup_kernel_vs_serial_compute": 104.62098599811299,
+  "status": "ok"
+}

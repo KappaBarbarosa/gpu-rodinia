@@ -1,0 +1,29 @@
+{
+  "name": "pathfinder",
+  "description": "PathFinder: minimum-cost grid path DP, data-parallel over columns, sequential over rows.",
+  "phase1_inputs": {
+    "serial_source": "experiments/pathfinder/serial/pathfinder_serial.c",
+    "algorithm_doc": "experiments/pathfinder/serial/ALGORITHM.md"
+  },
+  "serial_binary": "experiments/pathfinder/serial/pathfinder_serial",
+  "golden": "experiments/pathfinder/golden/golden_100000x1000.out",
+  "workload": {
+    "cols": 100000,
+    "rows": 1000
+  },
+  "args_template": ["{cols}", "{rows}", "{output_file}"],
+  "output_parser": {
+    "type": "indexed_int",
+    "comment": "Each line is '<index>\\t<value>'; integer accumulated path costs of the final row, compared exactly."
+  },
+  "tolerance": {"rtol": 0, "atol": 0,
+                "comment": "Integer min/add DP — exact match required, no float reordering."},
+  "build": {
+    "compiler": "nvcc",
+    "correctness_flags": ["-O2", "-arch=sm_86"],
+    "perf_flags": ["-O2", "-arch=sm_86"],
+    "comment": "Integer math; no FMA concerns, so correctness and perf builds are identical."
+  },
+  "run": {"repeats": 5, "metric": "nsys_kernel_seconds", "timeout_seconds": 180,
+          "serial_compute_regex": "compute_seconds: ([0-9.]+)"}
+}

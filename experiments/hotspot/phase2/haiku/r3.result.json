@@ -1,0 +1,19 @@
+{
+  "label": "haiku_p2r3",
+  "benchmark": "hotspot",
+  "candidate": "experiments/hotspot/phase2/haiku/r3.cu",
+  "run_args": [
+    "1024",
+    "1024",
+    "1000",
+    "/home/marl2025/pp_final/gpu-rodinia/data/hotspot/temp_1024",
+    "/home/marl2025/pp_final/gpu-rodinia/data/hotspot/power_1024",
+    "/tmp/eval_vz1d3jrq/cand.out"
+  ],
+  "build_correctness": {
+    "ok": false,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot/phase2/haiku/r3.cu -o /tmp/eval_vz1d3jrq/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/hotspot/phase2/haiku/r3.cu(77): warning #20094-D: a host variable \"t_ambient\" cannot be directly read in a device function\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/hotspot/phase2/haiku/r3.cu(75): error: identifier \"t_ambient\" is undefined in device code\n\n1 error detected in the compilation of \"/home/marl2025/pp_final/gpu-rodinia/experiments/hotspot/phase2/haiku/r3.cu\".\n"
+  },
+  "status": "build_failed"
+}

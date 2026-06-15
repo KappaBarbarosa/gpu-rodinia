@@ -1,0 +1,49 @@
+{
+  "label": "sonnet_p2r1",
+  "benchmark": "bfs",
+  "candidate": "/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu",
+  "run_args": [
+    "/home/marl2025/pp_final/gpu-rodinia/data/bfs/graph1MW_6.txt",
+    "/tmp/eval_t_b38twe/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu -o /tmp/eval_t_b38twe/cand_corr",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu(95): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu(95): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu: In function \u2018int main(int, char**)\u2019:\n/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu:95:7: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   95 |     fscanf(fp, \"%d\", &source_file);\n      |     ~~^~~~~~~~~~~~~~~~~~~~~~~~\n"
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 1.1191539578139782,
+    "stderr": "compute_seconds: 0.001066\n"
+  },
+  "verify": {
+    "ok": true,
+    "n": 1000000,
+    "mismatches": 0,
+    "max_abs_err": 0.0,
+    "max_rel_err": 0.0,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\ncompute_seconds: 0.132668\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu -o /tmp/eval_t_b38twe/cand_perf",
+    "stderr": "/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu(95): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu(95): warning #1650-D: result of call is not used\n\n/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu: In function \u2018int main(int, char**)\u2019:\n/home/marl2025/pp_final/gpu-rodinia/experiments/bfs/phase2/sonnet/r1.cu:95:7: warning: ignoring return value of \u2018int fscanf(FILE*, const char*, ...)\u2019, declared with attribute warn_unused_result [-Wunused-result]\n   95 |     fscanf(fp, \"%d\", &source_file);\n      |     ~~^~~~~~~~~~~~~~~~~~~~~~~~\n"
+  },
+  "timing": {
+    "median_wall_s": 1.0579420328140259,
+    "nsys": {
+      "kernel_s": 0.000854027,
+      "htod_s": 0.004133798,
+      "dtoh_s": 0.00037338
+    }
+  },
+  "serial_compute_s": 0.077005,
+  "serial_wall_s": 0.9790383782237768,
+  "speedup_kernel_vs_serial_compute": 90.1669385159954,
+  "status": "ok"
+}

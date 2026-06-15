@@ -1,0 +1,53 @@
+{
+  "label": "sonnet_p2r4",
+  "benchmark": "hotspot",
+  "candidate": "experiments/hotspot/phase2/sonnet/r4.cu",
+  "run_args": [
+    "1024",
+    "1024",
+    "1000",
+    "/home/marl2025/pp_final/gpu-rodinia/data/hotspot/temp_1024",
+    "/home/marl2025/pp_final/gpu-rodinia/data/hotspot/power_1024",
+    "/tmp/eval_zzc9qtcy/cand.out"
+  ],
+  "build_correctness": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 --fmad=false /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot/phase2/sonnet/r4.cu -o /tmp/eval_zzc9qtcy/cand_corr",
+    "stderr": ""
+  },
+  "correctness_run": {
+    "ok": true,
+    "wall_s": 0.6813704669475555,
+    "stderr": ""
+  },
+  "verify": {
+    "ok": true,
+    "n": 1048576,
+    "mismatches": 0,
+    "max_abs_err": 0.0,
+    "max_rel_err": 0.0,
+    "first_mismatch_index": -1,
+    "output_format_ok": true
+  },
+  "memcheck": {
+    "clean": true,
+    "tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\n"
+  },
+  "build_perf": {
+    "ok": true,
+    "cmd": "nvcc -O2 -arch=sm_86 /home/marl2025/pp_final/gpu-rodinia/experiments/hotspot/phase2/sonnet/r4.cu -o /tmp/eval_zzc9qtcy/cand_perf",
+    "stderr": ""
+  },
+  "timing": {
+    "median_wall_s": 0.6599080078303814,
+    "nsys": {
+      "kernel_s": 0.033469658,
+      "htod_s": 0.000941733,
+      "dtoh_s": 0.000383586
+    }
+  },
+  "serial_compute_s": 5.795126,
+  "serial_wall_s": 6.779172889888287,
+  "speedup_kernel_vs_serial_compute": 173.14565927145117,
+  "status": "ok"
+}
